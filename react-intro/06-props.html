@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Inputs</title>
+    <style>
+        .highlight{
+            color: brown;
+        }
+    </style>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    
+    <script type="text/babel">
+        function PropsComponent(props){
+            return (
+                <div>
+                <div>{JSON.stringify(props)}</div>
+                {props.children}
+                </div>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        
+        /*
+        const div = React.createElement('div', null, 'Some child content')
+        root.render(React.createElement(PropsComponent, {x : 100, y : 200}, div))
+        */
+
+        
+        const divEle = <div>Some child content</div>
+        root.render(
+            <PropsComponent x={100} y={200}>
+                {divEle}
+            </PropsComponent>
+        )
+        
+    </script>
+    
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>

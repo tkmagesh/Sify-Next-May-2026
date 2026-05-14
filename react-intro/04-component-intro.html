@@ -8,6 +8,7 @@
     <script src="react-dom.development.js"></script>
     <script src="babel.min.js"></script>
     <script type="text/babel">
+        {/*
         function Counter(){
             console.log('Counter Rendered')
 
@@ -31,10 +32,41 @@
                 </div>
             )
         }
+        */}
+
+        function Counter(){
+            console.log('Counter Rendered')
+
+            let [value, setValue] = React.useState(100)
+            
+            let onButtonClick = (e) => {
+                switch (e.target.innerText) {
+                    case 'Increment':
+                        setValue(value + 1)
+                        break;
+                    case 'Decrement':
+                        setValue(value - 1)
+                        break;
+                }
+            };
+
+            
+            return (
+                <div>
+                    <h1>Counter</h1>
+                    <div>
+                        <button onClick={onButtonClick}>Decrement</button>
+                        <span>[ {value} ]</span>
+                        <button onClick={onButtonClick}>Increment</button>
+                    </div>
+                </div>
+            )
+        }
 
         function EvenGenerator(){
             let [evenList, setEvenList] = React.useState([])
-            const onBtnGenerateNextClick = () => {
+            const onBtnGenerateNextClick = (e) => {
+                console.log(e)
                 setEvenList([...evenList, evenList.length * 2])
             }
             return (

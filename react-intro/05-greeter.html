@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Inputs</title>
+    <style>
+        .highlight{
+            color: brown;
+        }
+    </style>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    
+    <script type="text/babel">
+        
+        {/*
+        function Greeter(){
+            console.log('Greeter rendered')
+            const [userName, setUserName] = React.useState('');
+            const [message, setMessage] = React.useState('');
+
+            const onTxtUserNameChange = (e) => {
+                setUserName(e.target.value)
+            }
+
+            const onBtnGreetClick = () => {
+                setMessage('Hi ' + userName + ', Have a nice day!')
+            }
+            return (
+                <div>
+                    <h1>Greeter</h1>
+                    <hr/>
+                    <label htmlFor="">User Name :</label>
+                    <input type="text" onChange={onTxtUserNameChange} value={userName}/>
+                    <button onClick={onBtnGreetClick}>Greet</button>
+                    <div className="highlight">{message}</div>
+                </div>
+            )
+        }
+        */}
+
+        function Greeter(props){
+            console.log('Greeter rendered')
+            
+            const [message, setMessage] = React.useState('');
+            const txtUserNameRef = React.useRef();
+            
+
+            const onBtnGreetClick = () => {
+                let userName = txtUserNameRef.current.value;
+                setMessage('Hi ' + userName + ', ' + props.msgTemplate)
+            }
+            return (
+                <div>
+                    <h1>Greeter</h1>
+                    <hr/>
+                    <label htmlFor="">User Name :</label>
+                    <input type="text" ref={txtUserNameRef}/>
+                    <button onClick={onBtnGreetClick}>Greet</button>
+                    <div className="highlight">{message}</div>
+                </div>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(
+            <div>
+                <Greeter msgTemplate="Have a nice day!"/>
+                <Greeter msgTemplate="Have a good day!"/>
+            </div>
+            )
+    </script>
+    
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>

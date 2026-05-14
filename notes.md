@@ -6,3 +6,12 @@
 - Lunch Break : 1:00 PM (1 hr)
 - Tea Break : 3:30 PM (20 mins)
 - Wind up : 5:30 PM
+
+## Methodology
+- No powerpoint
+- Discussion & Code
+
+## Repository
+- https://github.com/tkmagesh
+
+
