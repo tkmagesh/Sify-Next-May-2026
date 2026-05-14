@@ -10,7 +10,7 @@
     <script type="text/babel">
         function Counter(){
             console.log('Counter Rendered')
-            
+
             let [value, setValue] = React.useState(100)
             
             let onDecrementClick = () => {
@@ -32,8 +32,32 @@
             )
         }
 
+        function EvenGenerator(){
+            let [evenList, setEvenList] = React.useState([])
+            const onBtnGenerateNextClick = () => {
+                setEvenList([...evenList, evenList.length * 2])
+            }
+            return (
+                <div>
+                    <h1>Even List</h1>
+                    <div>{evenList.toString()}</div>
+                    <button onClick={onBtnGenerateNextClick}>Generate Next</button>
+                </div>
+            )
+        }
+
+        function App(){
+            return (
+                <div>
+                    <Counter/>
+                    <EvenGenerator/>
+                </div>
+            )
+        }
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(React.createElement(Counter))
+        root.render(
+            <App/>
+        );
     </script>
 </head>
 <body>
