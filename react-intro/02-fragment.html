@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDOM fragment</title>
+    <script src="react.development.js"></script>    
+    <script src="react-dom.development.js"></script>
+    <script>
+        let root;
+        let counter = 0;
+        function onBtnRenderClick(){
+            counter += 1
+            let fragmentRoot = React.createElement('div', null, 
+                React.createElement('h1', null, 'React Introduction'),
+                React.createElement('hr'),
+                React.createElement('div', null, 
+                    React.createElement('span', null, 'Counter : '),
+                    React.createElement('span', null, counter),
+                ),
+                React.createElement('div', null, 
+                    React.createElement('h3', null, 'Introduction'),
+                    React.createElement('p', null, 'Excepteur minim labore nostrud amet exercitation dolor esse cupidatat do consectetur nostrud. Voluptate id dolor proident nisi minim tempor in. Amet velit eiusmod velit fugiat. Laboris id duis enim labore culpa tempor deserunt fugiat culpa commodo irure esse deserunt ipsum. Sint nisi aute ullamco nostrud exercitation enim et.'),
+                    React.createElement('p', null, 'Aliqua nulla sunt labore ea ea ullamco laborum consectetur anim. Anim irure velit incididunt ex irure quis commodo quis ex cillum cupidatat excepteur aliquip. Irure amet excepteur culpa et incididunt qui est aute cupidatat dolore sint adipisicing cillum reprehenderit.'),
+                    React.createElement('p', null, 'Quis cillum ex amet ad adipisicing fugiat. Exercitation officia consequat reprehenderit aute tempor do et consectetur ipsum sint esse duis pariatur. Amet magna labore veniam Lorem laboris sint velit reprehenderit dolore labore aliquip excepteur nostrud mollit. Deserunt esse anim sunt commodo. Esse incididunt sit irure minim laboris commodo enim nostrud exercitation consequat fugiat consequat ullamco voluptate. Enim ullamco incididunt et laborum voluptate aliquip ut magna consequat mollit. Non irure aliquip dolore quis consequat ex aliquip laborum sunt dolore fugiat incididunt Lorem.')
+                ),
+                React.createElement('div', null, 
+                    React.createElement('h3', null, 'Advantages'),
+                    React.createElement('ul', null, 
+                        React.createElement('li', null, 'Declarative'),
+                        React.createElement('li', null, 'Efficient'),
+                    )
+                )
+            )
+
+            root.render(fragmentRoot);
+        }
+        function init(){
+            let btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click', onBtnRenderClick)
+
+            root = ReactDOM.createRoot(document.getElementById('root'));
+        }
+        window.addEventListener('DOMContentLoaded', init)
+    </script>
+</head>
+<body>
+    <button id="btnRender">Render</button>
+    <div id="root"></div>
+</body>
+</html>

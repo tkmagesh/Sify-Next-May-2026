@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDOM Intro</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+
+    <script>
+        // Browser DOM
+        /* 
+        let h3Ele = document.createElement('h3');
+        h3Ele.innerText = 'React is awesome!'
+        h3Ele.setAttribute('id','h3-react')
+        let rootEle = document.getElementById('root');
+        rootEle.appendChild(h3Ele) 
+        */
+
+        function onBtnDOMClick(){
+            let divMessage = document.getElementById('divMessage');
+            divMessage.innerText = 'Good Morning! (DOM)'
+        }
+
+        let reactRoot ;
+        let counter = 0
+        function onBtnReactClick(){
+            counter += 1
+            let divMessage = React.createElement('div', null, 'Good Morning! (VDOM) - ' + counter);
+            reactRoot.render(divMessage);
+        }
+
+        function init(){
+            let btnDom = document.getElementById('btn-dom');
+            btnDom.addEventListener('click', onBtnDOMClick);
+
+            let btnReact = document.getElementById('btn-react');
+            btnReact.addEventListener('click', onBtnReactClick);
+
+            reactRoot = ReactDOM.createRoot(document.getElementById('react-root'));
+            
+        }
+        window.addEventListener('DOMContentLoaded', init);
+    </script>
+</head>
+<body>
+    <h1>VDOM Intro</h1>
+    <div id="dom-root">
+        <button id="btn-dom">Click Me (DOM)</button>
+        <div id="divMessage"></div>
+    </div>
+    <button id="btn-react">Click Me (VDOM)</button>
+    <div id="react-root">
+
+    </div>
+</body>
+</html>

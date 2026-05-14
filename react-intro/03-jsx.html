@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VDOM fragment</title>
+    <script src="react.development.js"></script>    
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        let root;
+        let counter = 0;
+        function onBtnRenderClick(){
+            counter += 1
+            let fragmentRoot = (
+                <div>
+                    <h1>React Intro</h1>
+                    <hr/>
+                    <div>
+                        <span>Counter :</span>
+                        <span>{counter}</span>
+                    </div>
+                    <div>
+                        <h3>Introduction</h3>
+                        <p>Mollit reprehenderit non voluptate culpa duis incididunt sit tempor ullamco cupidatat et exercitation id ipsum. Nulla reprehenderit et anim tempor. Labore cupidatat ad consequat pariatur eiusmod id labore mollit id anim officia magna.</p>
+                        <p>Irure quis ea ut magna fugiat deserunt sit cupidatat voluptate nostrud sint amet anim officia. Aliqua consectetur excepteur ullamco tempor ut. Sit dolore sit ea quis non ad velit officia labore ut non. Pariatur ipsum sunt cillum aute ea sit. Proident eiusmod irure elit deserunt minim ad officia qui officia dolore adipisicing.</p>
+                        <p>Lorem ullamco ullamco commodo aute amet mollit incididunt ad pariatur voluptate nisi. Quis laboris incididunt minim aliqua irure magna mollit adipisicing consectetur laborum ad qui. Fugiat ut excepteur laboris consequat. Amet Lorem commodo aliqua anim deserunt eiusmod.</p>
+                    </div>
+                    <div>
+                        <h3>Advantages</h3>
+                        <ul>
+                            <li>Declarative</li>
+                            <li>Efficient</li>
+                        </ul>
+                    </div>
+                </div>
+            )
+
+            root.render(fragmentRoot);
+        }
+        function init(){
+            let btnRender = document.getElementById('btnRender');
+            btnRender.addEventListener('click', onBtnRenderClick)
+
+            root = ReactDOM.createRoot(document.getElementById('root'));
+        }
+        window.addEventListener('load', init)
+    </script>
+</head>
+<body>
+    <button id="btnRender">Render</button>
+    <div id="root"></div>
+</body>
+</html>

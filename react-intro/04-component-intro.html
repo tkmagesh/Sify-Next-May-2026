@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component Intro</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <script type="text/babel">
+        function Counter(){
+            console.log('Counter Rendered')
+            
+            let [value, setValue] = React.useState(100)
+            
+            let onDecrementClick = () => {
+                setValue(value - 1)
+            };
+
+            let onIncrementClick = () => {
+                setValue(value + 1)
+            }
+            return (
+                <div>
+                    <h1>Counter</h1>
+                    <div>
+                        <button onClick={onDecrementClick}>Decrement</button>
+                        <span>[ {value} ]</span>
+                        <button onClick={onIncrementClick}>Increment</button>
+                    </div>
+                </div>
+            )
+        }
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(React.createElement(Counter))
+    </script>
+</head>
+<body>
+    <div id="root"></div>
+</body>
+</html>
