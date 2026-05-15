@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        .positive{
+            color : green
+        }
+        .negative{
+            color : red;
+        }
+    </style>
+    <script type="text/babel">
+        const Calculator = () => {
+            const [n1, setN1] = React.useState(0)
+            const [n2, setN2] = React.useState(0)
+            const [result, setResult] = React.useState(0);
+            const [showResult, setShowResult] = React.useState(true);
+
+            const onN1Change = e => setN1(parseInt(e.target.value));
+            const onBtnAddClick = () => setResult(n1 + n2);
+            const onBtnSubtractClick = () => setResult(n1 - n2);
+
+            // const resultEle = showResult ? (<div className={result >= 0 ? "positive" : "negative"}>{result}</div>) : null;
+            return (
+                <div>
+                    <h1>Calculator</h1>
+                    <input type="number" onChange={ onN1Change }/>
+                    <input type="number" onChange={ e => setN2(parseInt(e.target.value))}/>
+                    <div>
+                        <button onClick={onBtnAddClick}>Add</button>
+                        <button onClick={onBtnSubtractClick}>Subtract</button>
+                    </div>
+                    <input type="checkbox" checked={showResult} onChange={ e => setShowResult(e.target.checked)} />
+                    <label >Show Result </label>
+                    {/* {resultEle} */}
+                    {showResult && <div className={result >= 0 ? "positive" : "negative"}>{result}</div> }
+                </div>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Calculator/>)
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>
