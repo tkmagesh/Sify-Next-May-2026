@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        .positive{
+            color : green
+        }
+        .negative{
+            color : red;
+        }
+    </style>
+    <script type="text/babel">
+        const Calculator = () => {
+            const [n1, setN1] = React.useState(0)
+            const [n2, setN2] = React.useState(0)
+            const [result, setResult] = React.useState(0);
+            const [operations, setOperations] = React.useState([]);
+            const [showHistory, setshowHistory] = React.useState(true);
+
+            const onN1Change = e => setN1(parseInt(e.target.value));
+            const onBtnAddClick = () => {
+                let result = n1 + n2
+                setOperations([...operations, `${n1} + ${n2} = ${result}`])
+                setResult(result);
+            }
+            const onBtnSubtractClick = () => {
+                let result = n1 - n2
+                setOperations([...operations, `${n1} - ${n2} = ${result}`])
+                setResult(result);
+            }
+            
+            return (
+                <div>
+                    <h1>Calculator</h1>
+                    <input type="number" onChange={ onN1Change }/>
+                    <input type="number" onChange={ e => setN2(parseInt(e.target.value))}/>
+                    <div>
+                        <button onClick={onBtnAddClick}>Add</button>
+                        <button onClick={onBtnSubtractClick}>Subtract</button>
+                    </div>
+                    <div className={result >= 0 ? "positive" : "negative"}>{result}</div>
+
+                    <input type="checkbox" checked={showHistory} onChange={ e => setshowHistory(e.target.checked)} />
+                    <label>Show History </label>
+                    { showHistory && <ul className="history">
+                        {operations.map((oper, idx) => <li key={idx}>{oper}</li>)}
+                    </ul> }
+                </div>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<Calculator/>)
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>

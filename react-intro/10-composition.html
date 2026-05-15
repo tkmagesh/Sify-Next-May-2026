@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+    <style>
+        .positive{
+            color : green
+        }
+        .negative{
+            color : red;
+        }
+    </style>
+    <script type="text/babel">
+        const calculatorModel = {
+            add(x,y) {
+                return x + y
+            },
+            subtract(x,y) {
+                return x - y
+            },
+            multiply(x,y) {
+                return x * y
+            },
+            divide(x,y) {
+                return x / y
+            },
+
+        }
+
+        const CalculatorApp = () => {
+            const [operations, setOperations] = React.useState([]);
+            const [showHistory, setshowHistory] = React.useState(true);
+            const onNewOperation = (n1, n2, oper, result) => {
+                setOperations([...operations, `${n1} ${oper} ${n2} = ${result}`])
+            }
+            return (
+                <div>
+                    <Calculator model={calculatorModel} onOperation={onNewOperation}/>
+                    <label>Show History </label>
+                    <input type="checkbox" checked={showHistory} onChange={ e => setshowHistory(e.target.checked)} />
+                    { showHistory &&  <CalculatorHistory operations={operations}/>}
+                </div>
+            )
+        }
+
+        const CalculatorHistory = (props) => {
+            const operations = props.operations;
+            return (  operations.length === 0 ? <div>No operations!</div> : 
+                    <ul className="history">
+                        {operations.map((oper, idx) => <li key={idx}>{oper}</li>)}
+                    </ul>
+            )
+        }
+
+        const Calculator = (props) => {
+            const model = props.model;
+            const onOperation = props.onOperation;
+
+            const [n1, setN1] = React.useState(0)
+            const [n2, setN2] = React.useState(0)
+            const [result, setResult] = React.useState(0);
+
+            const onN1Change = e => setN1(parseInt(e.target.value));
+            const onBtnAddClick = () => {
+                let result = model.add(n1, n2)
+                onOperation(n1, n2, '+', result)
+                setResult(result);
+            }
+            const onBtnSubtractClick = () => {
+                let result = model.subtract(n1, n2)
+                onOperation(n1, n2, '-', result)
+                setResult(result);
+            }
+            
+            return (
+                <div>
+                    <h1>Calculator</h1>
+                    <input type="number" onChange={ onN1Change }/>
+                    <input type="number" onChange={ e => setN2(parseInt(e.target.value))}/>
+                    <div>
+                        <button onClick={onBtnAddClick}>Add</button>
+                        <button onClick={onBtnSubtractClick}>Subtract</button>
+                    </div>
+                    <div className={result >= 0 ? "positive" : "negative"}>{result}</div>
+                </div>
+            )
+        }
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<CalculatorApp/>)
+    </script>
+</head>
+<body>
+    <div id="root">
+        
+    </div>
+</body>
+</html>
