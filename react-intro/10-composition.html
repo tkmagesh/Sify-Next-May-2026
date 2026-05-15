@@ -47,8 +47,8 @@
                 </div>
             )
         }
-
-        const CalculatorHistory = (props) => {
+    /*
+        const CalculatorHistory = ({operation}) => {
             const operations = props.operations;
             return (  operations.length === 0 ? <div>No operations!</div> : 
                     <ul className="history">
@@ -56,10 +56,19 @@
                     </ul>
             )
         }
-
-        const Calculator = (props) => {
+    */
+        const CalculatorHistory = ({operations}) => (operations.length === 0 ? <div>No operations!</div> : 
+            <ul className="history">
+                {operations.map((oper, idx) => <li key={idx}>{oper}</li>)}
+            </ul>
+        )
+        
+        const Calculator = ({model,onOperation, children}) => {
+            /* 
             const model = props.model;
             const onOperation = props.onOperation;
+            */
+            
 
             const [n1, setN1] = React.useState(0)
             const [n2, setN2] = React.useState(0)
