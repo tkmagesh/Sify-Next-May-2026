@@ -5,6 +5,9 @@
 
 import express from 'express';
 import * as path from 'path';
+import { Dummy } from '@nx-demo-workspace/frontend';
+
+let dm : Dummy;
 
 console.log('backend running')
 const app = express();

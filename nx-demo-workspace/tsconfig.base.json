@@ -14,7 +14,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@nx-demo-workspace/shared-models": ["./libs/shared-models/src/index.ts"]
+      "@nx-demo-workspace/shared-models": ["./libs/shared-models/src/index.ts"],
+      "@nx-demo-workspace/frontend": ["apps/frontend/src/app/app.tsx"]
+
     }
   },
   "exclude": ["node_modules", "tmp"]

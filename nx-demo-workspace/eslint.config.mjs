@@ -20,6 +20,14 @@ export default [
               sourceTag: '*',
               onlyDependOnLibsWithTags: ['*'],
             },
+            {
+              sourceTag: 'scope:server',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:server'],
+            },
+            {
+              sourceTag: 'scope:client',
+              onlyDependOnLibsWithTags: ['scope:shared', 'scope:client'],
+            },
           ],
         },
       ],
