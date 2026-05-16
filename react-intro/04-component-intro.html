@@ -78,11 +78,37 @@
             )
         }
 
+        function SimpleCounter(){
+            console.log('Counter Rendered')
+
+            let [value, setValue] = React.useState(0)
+            
+            let onButtonClick = (e) => {
+                let newVal = value + 1
+                setValue(newVal)
+                console.log('value = ', newVal)
+            };
+
+            return (
+                <div>
+                    <h1>Counter</h1>
+                    <div>
+                        <span>[ {value} ]</span>
+                        <button onClick={onButtonClick}>Increment</button>
+                    </div>
+                </div>
+            )
+        }
+
+        
+
         function App(){
             return (
                 <div>
-                    <Counter/>
+                    {/* <Counter/>
                     <EvenGenerator/>
+                    */}
+                    <SimpleCounter/>
                 </div>
             )
         }

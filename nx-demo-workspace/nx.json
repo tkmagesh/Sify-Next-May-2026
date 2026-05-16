@@ -52,6 +52,17 @@
       "options": {
         "targetName": "test"
       }
+    },
+    {
+      "plugin": "@nx/next/plugin",
+      "options": {
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "serveStaticTargetName": "serve-static",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
     }
   ],
   "generators": {
@@ -69,6 +80,12 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@nx/next": {
+      "application": {
+        "style": "css",
+        "linter": "eslint"
+      }
     }
   },
   "targetDefaults": {
@@ -77,7 +94,6 @@
       "cache": true
     }
   },
-
   "projects": {
     "frontend": {
       "tags": ["scope:client"]

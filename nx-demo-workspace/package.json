@@ -6,11 +6,13 @@
   "private": true,
   "devDependencies": {
     "@eslint/js": "^9.8.0",
+    "@next/eslint-plugin-next": "^16.1.6",
     "@nx/eslint": "22.7.1",
     "@nx/eslint-plugin": "22.7.1",
     "@nx/express": "^22.7.1",
     "@nx/jest": "22.7.1",
-    "@nx/js": "22.7.1",
+    "@nx/js": "22.7.2",
+    "@nx/next": "^22.7.2",
     "@nx/node": "22.7.1",
     "@nx/react": "^22.7.1",
     "@nx/vite": "22.7.1",
@@ -31,6 +33,7 @@
     "@vitejs/plugin-react": "^6.0.0",
     "@vitest/ui": "~4.1.0",
     "eslint": "^9.8.0",
+    "eslint-config-next": "^16.1.6",
     "eslint-config-prettier": "^10.0.0",
     "eslint-plugin-import": "2.31.0",
     "eslint-plugin-jsx-a11y": "6.10.1",
@@ -56,6 +59,7 @@
   "dependencies": {
     "axios": "^1.6.0",
     "express": "^4.21.2",
+    "next": "~16.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   }

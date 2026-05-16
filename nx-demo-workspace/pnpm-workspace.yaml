@@ -4,5 +4,6 @@ allowBuilds:
   core-js-pure: true
   less: true
   nx: true
+  sharp: true
   unrs-resolver: true
 autoInstallPeers: true
